@@ -37,7 +37,10 @@ enum { DR_PAGE_US915 = 0x10 };
 
 // Global maximum frame length
 enum { STD_PREAMBLE_LEN  =  8 };
-enum { MAX_LEN_FRAME     = 64 };
+// 10.08.2018 Ivan Rakilovsky
+// Changed MAX_LEN_FRAME from 64 to 243
+// (to allow for 230 bytes of payload + 13 bytes header)
+enum { MAX_LEN_FRAME     = 243 };
 enum { LEN_DEVNONCE      =  2 };
 enum { LEN_ARTNONCE      =  3 };
 enum { LEN_NETID         =  3 };

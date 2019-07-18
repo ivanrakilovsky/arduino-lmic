@@ -558,7 +558,10 @@ static void rxlora (u1_t rxmode) {
     // set LNA gain
     writeReg(RegLna, LNA_RX_GAIN);
     // set max payload size
-    writeReg(LORARegPayloadMaxLength, 64);
+    // 10.08.2018 Ivan Rakilovsky
+    // Changed from 64 to MAX_LEN_FRAME (243)
+    // (so we can have 230 bytes of downlink payload)
+    writeReg(LORARegPayloadMaxLength, MAX_LEN_FRAME);
 #if !defined(DISABLE_INVERT_IQ_ON_RX)
     // use inverted I/Q signal (prevent mote-to-mote communication)
     writeReg(LORARegInvertIQ, readReg(LORARegInvertIQ)|(1<<6));
