@@ -240,7 +240,10 @@ void hal_init () {
 #endif
 }
 
-void hal_failed (const char *file, u2_t line) {
+// 30.01.2019 Ivan Rakilovsky
+// Added __attribute__((weak))
+// So we can handle FAILURE lmic\radio.c:523 by overring the function
+__attribute__((weak)) void hal_failed (const char *file, u2_t line) {
 #if defined(LMIC_FAILURE_TO)
     LMIC_FAILURE_TO.println("FAILURE ");
     LMIC_FAILURE_TO.print(file);
